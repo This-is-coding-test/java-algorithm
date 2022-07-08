@@ -9,11 +9,11 @@ public class 숫자만_추출 {
         String newStr = "";
 
         for (int i = 0; i < st.length(); i++) {
-            if (!Character.isAlphabetic(st.charAt(i))) {
+            if (Character.isDigit(st.charAt(i))){
                 newStr += st.charAt(i);
             }
-
         }
+
         System.out.println(Integer.parseInt(newStr));
     }
 }
