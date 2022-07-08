@@ -9,6 +9,8 @@ public class 회문_문자열 {
         String st = br.readLine().toLowerCase(Locale.ROOT);
         Boolean answer = true;
 
+
+
         char[] chars = st.toCharArray();
 
         for (int i = 0; i < chars.length / 2; i++) {
@@ -22,6 +24,9 @@ public class 회문_문자열 {
 
         System.out.println(answer ? "YES" : "NO");
 
-
+        // 2번째 풀이
+        String reverSt = new StringBuilder(st).reverse().toString();
+//        st.equalsIgnoreCase()
+        System.out.println(st.equals(reverSt)?"YES":"NO");
     }
 }

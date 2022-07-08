@@ -28,6 +28,12 @@ public class 유효한_팰린드롬 {
         }
         System.out.println(answer ? "YES" : "NO");
 
+        // 정규식 이용하는 방법
+        // A-Z가 아닌 것들 -> 빈문지
+        newStr = st.toUpperCase(Locale.ROOT).replaceAll("[^A-Z]", "");
+        String reverseStr = new StringBuilder(newStr).reverse().toString();
+        System.out.println(newStr.equals(reverseStr) ? "YES" : "NO");
+
 
     }
 }
