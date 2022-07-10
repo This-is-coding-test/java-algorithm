@@ -4,15 +4,15 @@
 
 ```java
 while((pos=s.indexOf(' '))!=-1){
-        String tmp=s.substring(0,pos);
-        if(max2<tmp.length()){
+    String tmp=s.substring(0,pos);
+    if(max2<tmp.length()){
         max2=tmp.length();
         answer2=tmp;
-        }
-        s=s.substring(pos+1);
-        }
+    }
+    s=s.substring(pos+1);
+}
 
-        if(s.length()>max2)answer2=s;
+if(s.length()>max2)answer2=s;
 ```
 
 String의 indexOf() 메소드는 매개변수로 들어온 문자가 가장 처음 발견된 인덱스를 리턴, 없는 경우 -1을 리턴
