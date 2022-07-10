@@ -16,8 +16,7 @@ public class 단어_뒤집기 {
         }
 
         for (String string : strings) {
-
-            StringBuffer sb = new StringBuffer(string);
+            StringBuilder sb = new StringBuilder(string);
             System.out.println(sb.reverse());
 
         }

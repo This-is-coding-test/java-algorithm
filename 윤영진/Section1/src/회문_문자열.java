@@ -10,7 +10,6 @@ public class 회문_문자열 {
         Boolean answer = true;
 
 
-
         char[] chars = st.toCharArray();
 
         for (int i = 0; i < chars.length / 2; i++) {
