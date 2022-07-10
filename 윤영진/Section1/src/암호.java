@@ -18,10 +18,9 @@ public class 암호 {
         strings.stream().forEach(string -> {
             string = string.replaceAll("[#]", "1");
             string = string.replaceAll("[*]", "0");
-            int aski = Integer.valueOf(string, 2);
+            int aski = Integer.parseInt(string, 2);
             char s = (char)aski;
             System.out.print(s);
-
         });
 
 
