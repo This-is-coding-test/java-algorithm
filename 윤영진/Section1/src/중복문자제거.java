@@ -22,6 +22,7 @@ public class 중복문자제거 {
     }
 
     public static void main2(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String st = br.readLine();
         String newStr = "";
@@ -30,7 +31,6 @@ public class 중복문자제거 {
                 newStr += st.charAt(i);
             }
         }
-
         System.out.println(newStr);
     }
 }

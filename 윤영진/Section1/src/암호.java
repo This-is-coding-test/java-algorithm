@@ -12,6 +12,7 @@ public class 암호 {
         List<String> strings = new ArrayList<>();
 
         for (int i = 0; i < st.length(); i = i + 7) {
+
             strings.add(st.substring(i, i + 7));
         }
 
@@ -22,7 +23,6 @@ public class 암호 {
             char s = (char)aski;
             System.out.print(s);
         });
-
 
     }
 }
