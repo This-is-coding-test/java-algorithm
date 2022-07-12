@@ -8,15 +8,15 @@
 
 ## 스터디 일정
 
-날짜 | 챕터 | 완료 여부
---- | --- | ---
-2022.07.10 | 01. String(문자열) |
-2022.07.17 | 02. Array(1, 2차원 배열) |
-2022.07.24 | 03. Two Pointers, Sliding window[효율성 : O(n^2)-->O(n)] |
-2022.07.24 | 04. HashMap, TreeSet (해쉬, 정렬지원 Set) |
-2022.07.31 | 05. Stack, Queue(자료구조) |
-2022.08.07 | 06. Sorting and Searching(정렬, 이분검색과 결정알고리즘) |
-2022.08.14 | 07. Recursive, Tree, Graph(DFS, BFS 기초) |
-2022.08.21 | 08. DFS, BFS 활용 |
-2022.08.28 | 09. Greedy Algorithm |
-2022.09.04 | 10. dynamic programming(동적계획법) |
+| 날짜 | 챕터 | 완료 여부 |
+| --- | --- | --- |
+| 2022.07.10 | 01. String(문자열) | `완료` |
+| 2022.07.17 | 02. Array(1, 2차원 배열) | |
+| 2022.07.24 | 03. Two Pointers, Sliding window[효율성 : O(n^2)-->O(n)] | |
+| 2022.07.24 | 04. HashMap, TreeSet (해쉬, 정렬지원 Set) | |
+| 2022.07.31 | 05. Stack, Queue(자료구조) | |
+| 2022.08.07 | 06. Sorting and Searching(정렬, 이분검색과 결정알고리즘) | |
+| 2022.08.14 | 07. Recursive, Tree, Graph(DFS, BFS 기초) | |
+| 2022.08.21 | 08. DFS, BFS 활용 | |
+| 2022.08.28 | 09. Greedy Algorithm | |
+| 2022.09.04 | 10. dynamic programming(동적계획법) | |
