@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+
 
 public class 가장_짧은_문자거리 {
 //    public static void main(String[] args) throws IOException {
@@ -36,7 +34,8 @@ public class 가장_짧은_문자거리 {
 //        }
 //    }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException { 
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] s = br.readLine().split(" ");
         char c = s[1].charAt(0);
