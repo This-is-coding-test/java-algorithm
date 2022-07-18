@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
 import java.util.StringTokenizer;
 
 public class 임시반장_정하기 {
@@ -11,7 +9,6 @@ public class 임시반장_정하기 {
         StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
         int[][] map = new int[N + 1][6];
-        int[] arr = new int[N + 1];
 
         for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -19,30 +16,29 @@ public class 임시반장_정하기 {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
+        int max = Integer.MIN_VALUE;
+        int answer = 0;
+
 
         for (int i = 1; i <= N; i++) {
+            int cnt = 0; // i번 학생의 cnt
             for (int j = 1; j <= N; j++) {
                 if (i != j) {
                     for (int k = 1; k <= 5; k++) {
                         if (map[i][k] == map[j][k]) {
-                            arr[i]++;
+                            cnt++;
                             break;
                         }
                     }
                 }
             }
-        }
-
-
-        int idx = 1;
-        int max = Integer.MIN_VALUE;
-        for (int i = 1; i <= N; i++) {
-            if (max < arr[i]) {
-                idx = i;
-                max = arr[i];
+            if (cnt > max) {
+                max = cnt;
+                answer = i;
             }
         }
-        System.out.println(idx);
+
+        System.out.println(answer);
 
 
     }
