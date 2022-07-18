@@ -18,7 +18,7 @@ public class 격자판_최대합 {
             }
         }
 
-        // 행 계산
+        // 행,열 계산
         for (int i = 0; i < N; i++) {
             int sum1 = 0;
             int sum2 = 0;
