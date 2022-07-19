@@ -4,7 +4,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 보이는_학생 {
-//        public static void main(String[] args) throws IOException {
+//    public static void main(String[] args) throws IOException {
+//        long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
 //        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 //        StringTokenizer st;
 //        int N = Integer.parseInt(br.readLine());
@@ -30,6 +31,10 @@ public class 보이는_학생 {
 //        }
 //
 //        System.out.println(answer);
+//
+//        long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+//        long secDiffTime = (afterTime - beforeTime)/1000; //두 시간에 차 계산
+//        System.out.println("시간차이(m) : "+secDiffTime);
 //
 //    }
     public static void main(String[] args) throws IOException {
