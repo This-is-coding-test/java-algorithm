@@ -29,7 +29,16 @@ public class 최대_매출 {
         }
 
         System.out.println(max);
-
-
     }
+
+    // Sliding Window
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
+        int N = Integer.parseInt(br.readLine());
+
+
+        }
 }
