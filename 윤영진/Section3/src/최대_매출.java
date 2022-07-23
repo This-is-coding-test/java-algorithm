@@ -53,9 +53,7 @@ public class 최대_매출 {
         }
         for (int i = K; i < N; i++) {
             sum = sum + arr[i] - arr[i - K];
-            if (sum > max) {
-                max = sum;
-            }
+            max = Math.max(sum, max);
         }
         System.out.println(max);
 
