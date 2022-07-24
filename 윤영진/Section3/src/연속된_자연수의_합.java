@@ -55,7 +55,6 @@ public class 연속된_자연수의_합 {
                     answer++;
                 }
             }
-
         }
 
         System.out.println(answer);
