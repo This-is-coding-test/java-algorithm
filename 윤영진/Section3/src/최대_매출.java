@@ -48,9 +48,11 @@ public class 최대_매출 {
 
         int max = Integer.MIN_VALUE;
         int sum = 0;
+
         for (int i = 0; i < K; i++) {
             sum += arr[i];
         }
+
         for (int i = K; i < N; i++) {
             sum = sum + arr[i] - arr[i - K];
             max = Math.max(sum, max);

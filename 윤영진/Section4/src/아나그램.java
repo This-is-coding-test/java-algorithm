@@ -16,8 +16,8 @@ public class 아나그램 {
         for (int i = 0; i < st1.length(); i++) {
             char c = st1.charAt(i);
             char d = st2.charAt(i);
-            arr1[(int)c - 65]++;
-            arr2[(int)d - 65]++;
+            arr1[(int) c - 65]++;
+            arr2[(int) d - 65]++;
         }
 
         boolean result = true;
@@ -27,7 +27,7 @@ public class 아나그램 {
                 break;
             }
         }
-        System.out.println(result?"YES":"NO");
+        System.out.println(result ? "YES" : "NO");
 
     }
 }

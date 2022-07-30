@@ -48,14 +48,14 @@ public class 연속_부분수열 {
         int answer = 0;
 
         int sum = arr[0];
-        if (sum == M) answer ++;
+        if (sum == M) answer++;
 
         while (rt < N) {
             sum += arr[rt++];
             if (sum == M) answer++;
-            while (sum>=M) {
+            while (sum >= M) {
                 sum -= arr[lt++];
-                if (sum==M) answer++;
+                if (sum == M) answer++;
             }
         }
         System.out.println(answer);

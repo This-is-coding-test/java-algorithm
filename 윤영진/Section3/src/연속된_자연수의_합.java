@@ -34,7 +34,6 @@ public class 연속된_자연수의_합 {
             arr = new int[N / 2 + 2];
         }
 
-        System.out.println(arr.length);
         for (int i = 1; i < arr.length; i++) {
             arr[i] = i;
         }

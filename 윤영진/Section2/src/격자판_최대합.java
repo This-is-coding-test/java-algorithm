@@ -43,7 +43,6 @@ public class 격자판_최대합 {
         result = Math.max(result, sum2);
 
 
-
         System.out.println(result);
 
 
