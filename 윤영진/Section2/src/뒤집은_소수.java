@@ -12,7 +12,6 @@ public class 뒤집은_소수 {
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-
 //            int tmp = Integer.parseInt(st.nextToken());
 //            int num = 0;
 //            while (tmp > 0) {
