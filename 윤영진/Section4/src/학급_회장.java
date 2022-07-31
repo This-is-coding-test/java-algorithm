@@ -1,31 +1,33 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class 학급_회장 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        String tmp = br.readLine();
-        int[] arr = new int[5];
+        String st = br.readLine();
+        Map<Character, Integer> map = new HashMap<>();
 
-        for (int i = 0; i < N; i++) {
-            char c = tmp.charAt(i);
-            arr[(int)c - 65]++;
+        for (char x : st.toCharArray()) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
         }
-        int idx = 0;
+
+//        map.containsKey('A');
+//        map.getOrDefault(key, defaultValue);
+
         int max = Integer.MIN_VALUE;
-        for (int i = 0; i < 5; i++) {
-            if (arr[i] > max) {
-                idx = i ;
-                max = arr[i];
+        char answer = ' ';
+
+        for (Character key : map.keySet()) {
+            if (max < map.get(key)) {
+                answer = key;
+                max = map.get(key);
             }
         }
-
-        System.out.println((char) (idx+65));
-
-
-
-
+        System.out.println(answer);
     }
+
 }
