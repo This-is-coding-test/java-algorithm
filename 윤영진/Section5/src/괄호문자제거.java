@@ -10,19 +10,23 @@ public class 괄호문자제거 {
 
         Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < st.length(); i++) {
-            char c = st.charAt(i);
-
-            if (c == '(') {
-                stack.push(c);
-            } else if (c == ')') {
-                stack.pop();
+        for (Character c : st.toCharArray()) {
+            if (c == ')') {
+                while (stack.pop() != '(') {}
             }else {
-                if (stack.isEmpty()) System.out.print(c);
+                if (Character.isAlphabetic(c)) {
+                    if (stack.isEmpty()) {
+                        System.out.print(c);
+                    }else {
+                        stack.push(c);
+                    }
+                }else {
+                    stack.push(c);
+                }
             }
 
-        }
 
+        }
 
     }
 }
