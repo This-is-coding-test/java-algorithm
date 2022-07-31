@@ -12,21 +12,18 @@ public class 괄호문자제거 {
 
         for (Character c : st.toCharArray()) {
             if (c == ')') {
-                while (stack.pop() != '(') {}
-            }else {
-                if (Character.isAlphabetic(c)) {
-                    if (stack.isEmpty()) {
-                        System.out.print(c);
-                    }else {
-                        stack.push(c);
-                    }
-                }else {
-                    stack.push(c);
+                while (stack.pop() != '(') {
                 }
+            } else if (c == '(') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty()) {
+                    System.out.print(c);
+                }
+
+
             }
 
-
         }
-
     }
 }
