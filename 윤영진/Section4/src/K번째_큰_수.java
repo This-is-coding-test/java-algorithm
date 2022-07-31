@@ -20,6 +20,9 @@ public class K번째_큰_수 {
         // TreeSet은 중복 제거, 자동 정렬
         TreeSet<Integer> ts = new TreeSet<>(Collections.reverseOrder());
 
+        // TreeSet에서 해당 숫자 제거
+        // ts.remove("143");
+
         for (int i = 0; i < N - 2; i++) {
             for (int j = i + 1; j < N - 1; j++) {
                 for (int k = j + 1; k < N; k++) {
