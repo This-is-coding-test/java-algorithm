@@ -25,7 +25,7 @@ public class 올바른_괄호 {
             }
         }
 
-        System.out.println("YES");
+        System.out.println(stack.isEmpty() ? "YES" : "NO");
 
     }
 }
