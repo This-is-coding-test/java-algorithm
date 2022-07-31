@@ -8,12 +8,23 @@ public class 학급_회장 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        String tmp = br.readLine();
-        Map<String, Integer> map = new HashMap<>();
+        String st = br.readLine();
+        Map<Character, Integer> map = new HashMap<>();
 
-        
+        for (char x : st.toCharArray()) {
+            map.put(x, map.getOrDefault(x, 0) + 1);
+        }
 
+        int max = Integer.MIN_VALUE;
+        char answer = ' ';
 
-
+        for (Character key : map.keySet()) {
+            if (max < map.get(key)) {
+                answer = key;
+                max = map.get(key);
+            }
+        }
+        System.out.println(answer);
     }
+
 }
