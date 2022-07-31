@@ -40,7 +40,6 @@ public class 응급실 {
                     queue.offer(tmp);
                     check = false;
                     break;
-
                 }
             }
 
