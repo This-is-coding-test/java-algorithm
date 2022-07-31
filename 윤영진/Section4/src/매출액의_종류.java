@@ -12,7 +12,7 @@ public class 매출액의_종류 {
         int K = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
-        int[] arr = new int[N];
+        Integer[] arr = new Integer[N];
 
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
@@ -22,21 +22,12 @@ public class 매출액의_종류 {
         Map<Integer, Integer> map = new HashMap<>();
 
         for (int i = 0; i < K - 1; i++) {
-            if (map.get(arr[i]) == null) {
-                map.put(arr[i], 1);
-            } else {
-                map.put(arr[i], map.get(arr[i]) + 1);
-            }
-
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
 
         for (int i = right; i < N; i++) { // 3,4,5,6
-            if (map.get(arr[i]) == null) {
-                map.put(arr[i], 1);
-            } else {
-                map.put(arr[i], map.get(arr[i]) + 1);
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
 
-            }
             System.out.print(map.size() + " ");
             map.put(arr[left], map.get(arr[left]) - 1);
             if (map.get(arr[left]) == 0) {
