@@ -15,6 +15,9 @@ public class 학급_회장 {
             map.put(x, map.getOrDefault(x, 0) + 1);
         }
 
+//        map.containsKey('A');
+//        map.getOrDefault(key, defaultValue);
+
         int max = Integer.MIN_VALUE;
         char answer = ' ';
 
