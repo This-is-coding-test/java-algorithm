@@ -3,10 +3,9 @@
 ## 학급 회장
 
 ```java
-Map<Character, Integer> map = new HashMap<>();
-map.put(x, map.getOrDefault(x, 0) + 1);
-map.containsKey('A');
-
+Map<Character, Integer> map = new Hamap.put(x, map.getOrDefault(x, 0) + 1);
+        map.containsKey('A');
+        shMap<>();
 ```
 
 `map.put(x, map.getOrDefault(x, 0) + 1)`: map에 해당 key가 존재하면 해당 키에 대한 value를 리턴하고 없는 경우 두번째 인자로 주어진 defaultValue를 리턴하는 함수
