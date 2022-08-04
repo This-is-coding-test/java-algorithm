@@ -27,7 +27,6 @@ public class Last_Recently_Used {
             boolean check = true;
 
             for (int j = 0; j < S; j++) {
-
                 // Hit
                 if (cur == cache[j]) {
                     check = false;
