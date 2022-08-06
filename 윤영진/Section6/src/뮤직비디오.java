@@ -24,8 +24,8 @@ public class 뮤직비디오 {
             arr[i] = Integer.parseInt(st.nextToken());
             rt += arr[i];
         }
-        OptionalInt lt = Arrays.stream(arr).max();
-        binarySearch(arr, lt.getAsInt(), rt);
+        int lt = Arrays.stream(arr).max().getAsInt();
+        binarySearch(arr, lt, rt);
 
 
     }
@@ -35,9 +35,6 @@ public class 뮤직비디오 {
         while (lt <= rt) {
             int mid = (lt + rt) / 2;
             if (check(arr, mid)) {
-                if (mid == 24) {
-                    System.out.println("check");
-                }
                 result = mid;
                 rt = mid - 1;
             }else {
