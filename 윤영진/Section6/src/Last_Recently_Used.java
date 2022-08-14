@@ -18,32 +18,27 @@ public class Last_Recently_Used {
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-        for (int i = 0; i < S; i++) {
-            cache[i] = 0;
-        }
 
-        for (int i = 0; i < N; i++) {
-            int cur = arr[i];
-            boolean check = true;
-
-            for (int j = 0; j < S; j++) {
-                // Hit
-                if (cur == cache[j]) {
-                    check = false;
-                    if (j != 0) {
-                        for (int k = j; k > 0; k--) {
-                            cache[k] = cache[k - 1];
-                        }
-                    }
-                }
+        for (int x : arr) {
+            int pos = -1;
+            for (int i = 0; i < S; i++) {
+                if (x == cache[i]) pos = i;
             }
+
             // Miss
-            if (check) {
-                for (int j = S - 1; j > 0; j--) {
-                    cache[j] = cache[j - 1];
+            if (pos == -1) {
+                for (int i = S - 1; i > 0; i--) {
+                    cache[i] = cache[i - 1];
                 }
             }
-            cache[0] = cur;
+            // Hit
+            else {
+                for (int i = pos; i > 0 ; i--) {
+                    cache[i] = cache[i - 1];
+                }
+            }
+
+            cache[0] = x;
         }
 
         for (int i = 0; i < S; i++) {
