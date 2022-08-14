@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class 장난꾸러기 {
 
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
