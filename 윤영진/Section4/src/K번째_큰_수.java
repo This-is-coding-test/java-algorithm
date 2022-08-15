@@ -35,7 +35,6 @@ public class K번째_큰_수 {
             return;
         }
 
-
         int cnt = 0;
         for (int x : ts) {
             cnt++;

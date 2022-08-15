@@ -20,10 +20,7 @@ public class 괄호문자제거 {
                 if (stack.isEmpty()) {
                     System.out.print(c);
                 }
-
-
             }
-
         }
     }
 }

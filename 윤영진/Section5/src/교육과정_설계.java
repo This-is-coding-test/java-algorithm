@@ -33,6 +33,7 @@ public class 교육과정_설계 {
         for (Character c : st1.toCharArray()) {
             queue.offer(c);
         }
+
         for (Character c : st2.toCharArray()) {
             if (queue.contains(c)) {
                 if (!queue.poll().equals(c)){
