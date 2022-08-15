@@ -21,7 +21,6 @@ public class 장난꾸러기 {
 
         List<Integer> sortList = people.stream().sorted(Comparator.comparingInt(o -> o)).collect(Collectors.toList());
 
-        // TODO 뭐냐?
         for (int i = 1; i <= N; i++) {
             if (!Objects.equals(people.get(i - 1), sortList.get(i - 1))) {
                 System.out.print(i + " ");
