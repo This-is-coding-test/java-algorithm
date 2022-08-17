@@ -24,7 +24,6 @@ public class Last_Recently_Used {
             for (int i = 0; i < S; i++) {
                 if (x == cache[i]) pos = i;
             }
-
             // Miss
             if (pos == -1) {
                 for (int i = S - 1; i > 0; i--) {
