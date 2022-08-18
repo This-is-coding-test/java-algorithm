@@ -7,7 +7,6 @@ public class 부분집합_구하기 {
     public static boolean[] check;
     public static int N;
 
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
@@ -15,7 +14,8 @@ public class 부분집합_구하기 {
         DFS(1);
 
     }
-
+    // 그림 그려보기
+    // DFS(1) == 원소 1이 존재한다, 존재하지 않는다.
     private static void DFS(int n) {
 
         if (n == N + 1) {
