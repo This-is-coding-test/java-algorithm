@@ -68,14 +68,4 @@ public class Tree_말단_노드까지의_가장_짧은_경로_BFS {
 
     }
 
-    private static int DFS(Node root, int level) {
-
-        if (root.lt == null && root.rt == null) {
-            return level;
-        } else {
-            return Math.min(DFS(root.lt, level + 1), DFS(root.rt, level + 1));
-        }
-    }
-
-
 }
