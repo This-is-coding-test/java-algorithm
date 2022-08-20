@@ -51,8 +51,6 @@ public class 경로_탐색_인접리스트 {
                     check[temp] = false;
                 }
             }
-
-
         }
     }
 }
