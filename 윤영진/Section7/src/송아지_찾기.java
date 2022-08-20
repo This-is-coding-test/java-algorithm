@@ -7,24 +7,11 @@ import java.util.StringTokenizer;
 
 public class 송아지_찾기 {
 
-    static class Node {
-        int data;
-        이진트리_순회_BFS.Node lt, rt;
-
-        public Node(int val) {
-            data = val;
-            lt = null;
-            rt = null;
-        }
-    }
-
     static int S;
     static int E;
     static int[] check = new int[10001];
     static int[] moves = {1, -1, 5};
-    public static Queue<Node> queue = new LinkedList<>();
-
-    public static Node root;
+    static Queue<Integer> queue = new LinkedList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,9 +21,9 @@ public class 송아지_찾기 {
 
         S = Integer.parseInt(st.nextToken());
         E = Integer.parseInt(st.nextToken());
-        root = new Node(5);
 
-        queue.offer(root);
+        check[S] = 1;
+        queue.offer(S);
         BFS();
     }
 
@@ -48,14 +35,21 @@ public class 송아지_찾기 {
             int len = queue.size();
 
             for (int i = 0; i < len; i++) {
+                Integer temp = queue.poll();
+                if (temp == E) {
+                    System.out.println(L);
+                    return;
+                }
 
+                for (int move : moves) {
+                    int nx = temp + move;
+                    if (nx > 0 && nx <= 10000 && check[nx] == 0) {
+                        check[nx] = 1;
+                        queue.offer(nx);
+                    }
+                }
             }
-
-            for (int move : moves) {
-                queue.offer(move);
-
-            }
-
+            L++;
         }
 
     }
