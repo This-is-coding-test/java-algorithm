@@ -44,6 +44,7 @@ public class 이분_검색 {
             }else {
                 return mid;
             }
+
         }
         return 0;
 
