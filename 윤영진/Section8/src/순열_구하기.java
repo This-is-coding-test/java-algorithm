@@ -42,7 +42,6 @@ public class 순열_구하기 {
         } else {
 
             for (int i = 0; i < N; i++) {
-
                 if (!ch[i]) {
                     ch[i] = true;
                     output[L] = arr[i];
