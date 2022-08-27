@@ -32,7 +32,6 @@ public class 조합_구하기 {
             for (int i = start; i <= N; i++) {
                 output[L] = i;
                 comb(i + 1, L + 1);
-
             }
 
         }
