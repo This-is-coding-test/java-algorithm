@@ -33,6 +33,7 @@ public class 조합_구하기 {
                 output[L] = i;
                 comb(i + 1, L + 1);
             }
+            
 
         }
 
