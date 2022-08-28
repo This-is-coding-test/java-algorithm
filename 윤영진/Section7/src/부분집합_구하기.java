@@ -14,6 +14,7 @@ public class 부분집합_구하기 {
         DFS(1);
 
     }
+
     // 그림 그려보기
     // DFS(1) == 원소 1이 존재한다, 존재하지 않는다.
     private static void DFS(int n) {
@@ -28,7 +29,7 @@ public class 부분집합_구하기 {
             if (sb.length() != 0) {
                 System.out.println(sb);
             }
-        }else {
+        } else {
             check[n] = true;
             DFS(n + 1);
             check[n] = false;
@@ -36,7 +37,6 @@ public class 부분집합_구하기 {
         }
 
     }
-
 
 
 }
