@@ -16,7 +16,7 @@
 | 2022.07.24 | 04. HashMap, TreeSet (해쉬, 정렬지원 Set) | `완료` |
 | 2022.07.31 | 05. Stack, Queue(자료구조) | `완료` |
 | 2022.08.07 | 06. Sorting and Searching(정렬, 이분검색과 결정알고리즘) | `완료` |
-| 2022.08.14 | 07. Recursive, Tree, Graph(DFS, BFS 기초) | |
-| 2022.08.21 | 08. DFS, BFS 활용 | |
+| 2022.08.14 | 07. Recursive, Tree, Graph(DFS, BFS 기초) | `완료` |
+| 2022.08.21 | 08. DFS, BFS 활용 | `완료` |
 | 2022.08.28 | 09. Greedy Algorithm | |
 | 2022.09.04 | 10. dynamic programming(동적계획법) | |
