@@ -4,10 +4,11 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class 회의실_배정 {
-    static class Meeting implements Comparable<Meeting>{
+    static class Meeting implements Comparable<Meeting> {
 
         private static final Comparator<Meeting> COMPARATOR =
-                Comparator.comparing(Meeting::getStart);
+                Comparator.comparing(Meeting::getEnd)
+                        .thenComparingInt(Meeting::getStart);
 
         int start;
         int end;
@@ -15,6 +16,10 @@ public class 회의실_배정 {
         public Meeting(int start, int end) {
             this.start = start;
             this.end = end;
+        }
+
+        public int getEnd() {
+            return end;
         }
 
         public int getStart() {
@@ -26,6 +31,7 @@ public class 회의실_배정 {
             return COMPARATOR.compare(this, o);
         }
     }
+
     static int N;
     static List<Meeting> meetings = new ArrayList<>();
 
@@ -33,7 +39,7 @@ public class 회의실_배정 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         N = Integer.parseInt(br.readLine());
-        int result = Integer.MIN_VALUE;
+        int result = 0;
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
@@ -41,25 +47,16 @@ public class 회의실_배정 {
             int end = Integer.parseInt(st.nextToken());
 
             meetings.add(new Meeting(start, end));
-
         }
 
         Collections.sort(meetings);
 
-        for (int i = 0; i < N; i++) {
-            int end = meetings.get(i).end;
-            int size = 1;
-            for (int j = i + 1; j < N; j++) {
-                Meeting m = meetings.get(j);
-                if (end > m.start) {
-                    continue;
-                }else {
-                    size++;
-                    end = m.end;
-                }
+        int end = 0;
+        for (Meeting meeting : meetings) {
+            if (meeting.start >= end) {
+                end = meeting.end;
+                result++;
             }
-
-            result = Math.max(result, size);
         }
         System.out.println(result);
     }
