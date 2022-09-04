@@ -1,10 +1,9 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class 원더랜드_Union_Find {
+public class 원더랜드_Kruskal {
 
     static class Edge implements Comparable<Edge> {
         int v1;
@@ -53,11 +52,15 @@ public class 원더랜드_Union_Find {
 
         Collections.sort(edges);
 
+        int cnt = 0;
         for (Edge edge : edges) {
+
+            if (cnt == V - 1) break;
             int v1 = edge.v1;
             int v2 = edge.v2;
 
             if (Find(v1) != Find(v2)) {
+                cnt++;
                 Union(v1, v2);
                 answer += edge.cost;
             }
