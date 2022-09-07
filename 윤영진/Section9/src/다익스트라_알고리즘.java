@@ -16,7 +16,7 @@ public class 다익스트라_알고리즘 {
     }
 
     static ArrayList<ArrayList<Edge>> listGraph = new ArrayList<>();
-    static PriorityQueue<Edge> pQ = new PriorityQueue<>((o1, o2) -> o2.cost - o1.cost);
+    static PriorityQueue<Edge> pQ = new PriorityQueue<>(Comparator.comparingInt(o -> o.cost));
     static int[] dist;
     static int N;
 

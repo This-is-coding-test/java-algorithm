@@ -42,7 +42,7 @@ public class 원더랜드_Kruskal {
         int answer = 0;
 
         for (int i = 0; i < E; i++) {
-            
+
             st = new StringTokenizer(br.readLine());
             int v1 = Integer.parseInt(st.nextToken());
             int v2 = Integer.parseInt(st.nextToken());
