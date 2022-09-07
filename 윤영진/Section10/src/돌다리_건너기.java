@@ -16,7 +16,6 @@ public class 돌다리_건너기 {
         for (int i = 3; i <= N + 1; i++) {
             dp[i] = dp[i - 1] + dp[i - 2];
         }
-
         System.out.println(dp[N + 1]);
 
 
