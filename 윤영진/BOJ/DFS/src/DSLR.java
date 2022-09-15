@@ -1,13 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class DSLR {
-    static char[] out;
-    static String dslr = "DSLR";
     static StringBuilder sb = new StringBuilder();
-    static boolean check = false;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,117 +16,61 @@ public class DSLR {
 
         for (int i = 0; i < T; i++) {
             st = new StringTokenizer(br.readLine());
-            String to = st.nextToken();
-            String from = st.nextToken();
-            check = false;
+            int to = Integer.parseInt(st.nextToken());
+            int from = Integer.parseInt(st.nextToken());
 
-            for (int j = 1; j <= 4; j++) {
-                char[] out = new char[j];
-                permutation(0, j, to, from, out);
+            Queue<Integer> queue = new LinkedList<>();
+            boolean[] visited = new boolean[10000];
+            String[] command = new String[10000];
+            queue.add(to);
+
+            Arrays.fill(command, "");
+            visited[to] = true;
+
+            BFS(from, queue,visited, command);
+
+        }
+
+        System.out.println(sb.toString());
+
+
+    }
+
+    private static void BFS(int from, Queue<Integer> queue, boolean[] visited, String[] command) {
+
+        while (!queue.isEmpty() && !visited[from]) {
+            Integer now = queue.poll();
+
+            int D = (2 * now) % 10000; // n을 두배로 바꾸고 10000으로 나눈 나머지
+            int S = now == 0 ? 9999 : now - 1; // 0일 때, 9999, 아니면 1을 빼준다
+            int L = (now % 1000) * 10 + now / 1000; // 1234 -> 2341 : 1234를 1000으로 나눈 나머지(234)에 10을 곱함=2340, 1234를 1000으로 나누면 1, 2340+1=2341
+            int R = (now % 10) * 1000 + now / 10; // 1234 -> 4123 : 1234를 10으로 나눈 나머지에 1000 곱합 = 4000, 1234를 10으로 나누면 123, 4000+123=4123
+
+            if (!visited[D]) {
+                visited[D] = true;
+                queue.add(D);
+                command[D] = command[now] + "D";
+            }
+            if (!visited[S]) {
+                visited[S] = true;
+                queue.add(S);
+                command[S] = command[now] + "S";
+            }
+
+            if (!visited[L]) {
+                visited[L] = true;
+                queue.add(L);
+                command[L] = command[now] + "L";
+            }
+
+            if (!visited[R]) {
+                visited[R] = true;
+                queue.add(R);
+                command[R] = command[now] + "R";
             }
         }
-        String tmp = "0";
-        // 0 -> 
-
-
-        System.out.println(sb);
-
+        sb.append(command[from]).append("\n");
 
     }
 
-    private static void permutation(int L, int end, String to, String from, char[] output) {
-
-        if (check) return;
-        if (L == end) {
-            String command = "";
-            for (char x : output) {
-                command += x;
-                if (x == 'D') {
-                    to = com1(to);
-                } else if (x == 'S') {
-                    to = com2(to);
-                } else if (x == 'L') {
-                    to = com3(to);
-                } else {
-                    to = com4(to);
-                    // 0010 -> 0001 -> 1000
-                }
-
-
-                if (Integer.parseInt(to) == Integer.parseInt(from)) {
-                    sb.append(command).append("\n");
-                    check = true;
-                    return;
-                }
-
-            }
-        } else {
-            for (int i = 0; i < 4; i++) {
-                output[L] = dslr.charAt(i);
-                permutation(L + 1, end, to, from, output);
-            }
-        }
-
-    }
-
-    private static String com4(String to) {
-        // to = 123 == 0123 -> 3012 // length =3 ,
-        String sub1 = "";
-        String sub2 = "";
-
-        if (to.length() != 4) {
-            sub1 = to.substring(to.length() - 1);
-            sub2 = to.substring(0, to.length() - 1); // 012
-        } else {
-            sub1 = to.substring(3, 4);
-            sub2 = to.substring(0, 3);
-        }
-        while (sub2.length() != 3) {
-            sub2 = "0" + sub2;
-        }
-        return sub1 + sub2;
-
-    }
-    // 0010 -> 0001 -> 1000
-
-    private static String com3(String to) {
-
-        // 0010 -> 0100
-        // 0123 -> 1230
-        // 1234 -> 2341
-        String sub1 = "";
-        String sub2 = "";
-        if (to.length() != 4) {
-            sub1 = to; // 123
-            sub2 = "0";
-        } else {
-            sub1 = to.substring(1);
-            sub2 = to.substring(0, 1);
-        }
-        while (sub1.length() != 3) {
-            sub1 = "0" + sub1;
-        }
-        return sub1 + sub2;
-
-    }
-
-    private static String com2(String to) {
-        int temp = Integer.parseInt(to) - 1;
-
-        if (temp == -1) {
-            return "9999";
-        }
-        return String.valueOf(temp);
-    }
-
-    private static String com1(String to) {
-
-        int temp = Integer.parseInt(to) * 2;
-
-        if (temp > 9999) {
-            return String.valueOf(temp % 10000);
-        }
-        return String.valueOf(temp);
-
-    }
 }
