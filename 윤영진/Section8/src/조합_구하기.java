@@ -18,6 +18,8 @@ public class 조합_구하기 {
         output = new int[M];
         comb(1, 0);
 
+        
+
     }
 
     private static void comb(int start, int L) {
@@ -28,7 +30,7 @@ public class 조합_구하기 {
             }
             System.out.println();
         } else {
-
+            
             for (int i = start; i <= N; i++) {
                 output[L] = i;
                 comb(i + 1, L + 1);

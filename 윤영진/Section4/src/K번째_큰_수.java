@@ -30,6 +30,7 @@ public class K번째_큰_수 {
                 }
             }
         }
+        System.out.println(ts.size());
         if (ts.size() < K) {
             System.out.println(-1);
             return;
@@ -37,10 +38,11 @@ public class K번째_큰_수 {
 
         int cnt = 0;
         for (int x : ts) {
+            System.out.print(x + " ");
             cnt++;
-            if (cnt == K) {
-                System.out.println(x);
-            }
+//            if (cnt == K) {
+//                System.out.println(x);
+//            }
         }
 
 
