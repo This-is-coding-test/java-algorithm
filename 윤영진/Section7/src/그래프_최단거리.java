@@ -50,7 +50,7 @@ public class 그래프_최단거리 {
         queue.offer(1);
         BFS();
 
-        for (int i = 2; i < dist.length; i++) {
+        for (int i = 1; i < dist.length; i++) {
             System.out.print(i + " : " + dist[i]);
             System.out.println();
         }
