@@ -13,7 +13,6 @@ public class 영역_구하기 {
     static int K;
 
     static int[][] arr;
-    static int count = 0;
 
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
