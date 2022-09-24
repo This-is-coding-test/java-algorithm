@@ -18,5 +18,5 @@
 | 2022.08.07 | 06. Sorting and Searching(정렬, 이분검색과 결정알고리즘) | `완료` |
 | 2022.08.14 | 07. Recursive, Tree, Graph(DFS, BFS 기초) | `완료` |
 | 2022.08.21 | 08. DFS, BFS 활용 | `완료` |
-| 2022.08.28 | 09. Greedy Algorithm | |
-| 2022.09.04 | 10. dynamic programming(동적계획법) | |
+| 2022.08.28 | 09. Greedy Algorithm | `완료` |
+| 2022.09.04 | 10. dynamic programming(동적계획법) | `완료` |
