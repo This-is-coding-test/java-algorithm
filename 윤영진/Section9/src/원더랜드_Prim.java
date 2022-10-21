@@ -54,7 +54,7 @@ public class 원더랜드_Prim {
     private static void Prim() {
 
         while (!pQ.isEmpty()) {
-            Edge edge = pQ.poll();
+            Edge edge = pQ.poll(); // 2,12
 
             if (check[edge.vex]) continue;
             check[edge.vex] = true;
