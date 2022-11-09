@@ -40,9 +40,9 @@ public class K번째_큰_수 {
         for (int x : ts) {
             System.out.print(x + " ");
             cnt++;
-//            if (cnt == K) {
-//                System.out.println(x);
-//            }
+            if (cnt == K) {
+                System.out.println(x);
+            }
         }
 
 

@@ -17,8 +17,7 @@ public class 중복문자제거 {
             characters.add(character);
         }
 
-        characters.stream().distinct().forEach(character ->
-                System.out.print(character));
+        characters.stream().distinct().forEach(System.out::print);
     }
 
     public static void main2(String[] args) throws IOException {
