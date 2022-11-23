@@ -8,17 +8,17 @@ public class 팩토리얼 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        System.out.println(recursive(N));
+        System.out.println(recursive(1));
 
 
     }
 
-    private static int recursive(int n) {
+    private static int recursive(int depth, int sum) {
 
         if (n == 1) return n;
 
         else {
-            return n * recursive(n - 1);
+            return n * recursive(sum*);
         }
     }
 }
