@@ -61,7 +61,7 @@ public class 이모티콘 {
                 }
 
                 // 복사 -> 클립보드가 비어있는 상태에는 붙여넣기 할 수 없다.
-                if (sc > 0 && sc <= 1000 && !visited[sc][sc]) {
+                if (sc > 0 && !visited[sc][sc]) {
                     visited[sc][sc] = true;
                     queue.offer(new EmoInfo(sc, sc));
                 }
