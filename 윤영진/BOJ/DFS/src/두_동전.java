@@ -6,6 +6,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class 두_동전 {
+
     // NxM 크기의 보드와 4개의 버튼
     // 두 개의 빈 칸에는 동전이 하나씩 놓여져 있고, 두 동전의 위치는 다르다.
     // 버튼은 왼쪽, 오른쪽, 위, 아래 -> 버튼을 누르면 두 동전이 버튼에 쓰여 있는 방향으로 동시에 이동
@@ -16,6 +17,7 @@ public class 두_동전 {
 
     // 두 동전 중 하나만 보드에서 떨어뜨리기 위해 버튼을 최소 몇 번 눌러야하는지
 
+
     static class Point {
         int x;
         int y;
@@ -25,13 +27,6 @@ public class 두_동전 {
             this.y = y;
         }
 
-        @Override
-        public String toString() {
-            return "Point{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
-        }
     }
 
     static char[][] map;
@@ -63,6 +58,7 @@ public class 두_동전 {
         }
 
         DFS(coin[0], coin[1], 0);
+
         if (time != Integer.MAX_VALUE) {
             System.out.println(time);
         } else {
