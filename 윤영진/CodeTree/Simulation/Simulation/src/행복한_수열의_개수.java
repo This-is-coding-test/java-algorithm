@@ -34,7 +34,6 @@ public class 행복한_수열의_개수 {
         }
         // 행, 열
         calculate();
-
         System.out.println(result);
     }
 
