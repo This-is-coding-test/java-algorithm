@@ -12,6 +12,31 @@ public class 트로미노 {
     static int n, m;
     static int[][] map;
     static int result = Integer.MIN_VALUE;
+    static int[][][] shapes = new int[][][]{
+            {{1, 1, 0},
+                    {1, 0, 0},
+                    {0, 0, 0}},
+
+            {{1, 1, 0},
+                    {0, 1, 0},
+                    {0, 0, 0}},
+
+            {{1, 0, 0},
+                    {1, 1, 0},
+                    {0, 0, 0}},
+
+            {{0, 1, 0},
+                    {1, 1, 0},
+                    {0, 0, 0}},
+
+            {{1, 1, 1},
+                    {0, 0, 0},
+                    {0, 0, 0}},
+
+            {{1, 0, 0},
+                    {1, 0, 0},
+                    {1, 0, 0}},
+    };
 
 
     public static void main(String[] args) throws IOException {
@@ -28,73 +53,41 @@ public class 트로미노 {
             }
         }
 
-        // block 1번 체크
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < m - 1; j++) {
-                result = Math.max(result, check1(i, j));
-            }
-        }
-
-        // block 2번 체크 - 행
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m - 2; j++) {
-                // 행
-                result = Math.max(result, checkRow(i, j)); // 행 고정
-            }
-        }
-
-        // block 2번 체크 - 열
-
-        for (int i = 0; i < n - 2; i++) {
-            for (int j = 0; j < m; j++) {
-                // 열
-                result = Math.max(result, checkCol(i, j)); // 열 고정
+            for (int j = 0; j < m ; j++) {
+                result = Math.max(result, getMaxSum(i, j));
             }
         }
 
         System.out.println(result);
     }
 
-    private static int checkCol(int i, int j) {
-        int sum = 0;
+    private static int getMaxSum(int x, int y) {
+        int maxSum = 0;
 
-        for (int k = i; k <= i + 2; k++) {
-            sum += map[k][j];
-        }
+        for (int i = 0; i < 6; i++) {
+            boolean isPossible = true;
+            int sum = 0;
 
-        return sum;
-
-    }
-
-    private static int checkRow(int i, int j) {
-        int sum = 0;
-
-        for (int k = j; k <= j + 2; k++) { // k -> 0, 1, 2
-            sum += map[i][k];
-        }
-        return sum;
-    }
-
-    private static int check1(int i, int j) {
-
-        int sum = 0;
-        int maxSum = Integer.MIN_VALUE;
-
-        for (int k = i; k < i + 2; k++) {
-            for (int l = j; l < j + 2; l++) {
-                sum += map[k][l];
+            for (int dx = 0; dx < 3; dx++) {
+                if(!isPossible) break;
+                for (int dy = 0; dy < 3; dy++) {
+                    if (shapes[i][dx][dy] == 0) continue;
+                    if (x + dx >= n || y + dy >= m) {
+                        isPossible = false;
+                        break;
+                    }
+                    else {
+                        sum += map[x + dx][y + dy];
+                    }
+                }
             }
-        }
 
-        for (int k = i; k < i + 2; k++) {
-            for (int l = j; l < j + 2; l++) {
-                sum -= map[k][l];
+            if (isPossible)
                 maxSum = Math.max(maxSum, sum);
-                sum += map[k][l];
-            }
+
         }
-
         return maxSum;
-
     }
+
 }
