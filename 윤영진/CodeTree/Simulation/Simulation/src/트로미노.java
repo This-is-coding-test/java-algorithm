@@ -12,6 +12,7 @@ public class 트로미노 {
     static int n, m;
     static int[][] map;
     static int result = Integer.MIN_VALUE;
+    
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

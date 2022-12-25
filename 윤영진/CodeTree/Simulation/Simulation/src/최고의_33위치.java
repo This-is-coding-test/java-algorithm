@@ -12,7 +12,7 @@ public class 최고의_33위치 {
     static int N;
     static int[][] map;
     static int result = Integer.MIN_VALUE;
-    
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
