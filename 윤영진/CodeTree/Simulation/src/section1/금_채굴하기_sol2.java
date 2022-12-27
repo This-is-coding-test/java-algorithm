@@ -1,9 +1,11 @@
+package section1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 금_채굴하기_sol3 {
+public class 금_채굴하기_sol2 {
 
     // n * n 크기의 이차원 영역에 파묻힌 금을 손해를 보지 않는 선에서 최대한 많이 채굴
     // 채굴을 마름모 모양으로 단 한 번
@@ -21,19 +23,25 @@ public class 금_채굴하기_sol3 {
 
     public static int getNumOfGold(int row, int col, int k) {
         int numOfGold = 0;
-        if (k == 0) return map[row][col];
 
-        int curX = row - k;
-        int curY = col;
+        numOfGold += map[row][col];
 
-        for (int dir = 0; dir < 4; dir++) {
-            for (int step = 0; step < k; step++) {
-                if (curX < n && curY < n && curX >= 0 && curY >= 0) {
-                    numOfGold += map[curX][curY];
+        for (int curK = 1; curK <= k; curK++) {
+            int curX = row - curK;
+            int curY = col;
+
+            for (int dir = 0; dir < 4; dir++) {
+                for (int step = 0; step < k; step++) {
+                    if (curX < n && curY < n && curX >= 0 && curY >= 0) {
+                        numOfGold += map[curX][curY];
+                    }
+                    curX +=  dx[dir];
+                    curY +=  dy[dir];
                 }
-                curX += dx[dir];
-                curY += dy[dir];
+
             }
+
+
         }
 
 
@@ -65,9 +73,10 @@ public class 금_채굴하기_sol3 {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                int numOfGold = 0;
+
                 for (int k = 0; k <= 2 * (n - 1); k++) {
-                    numOfGold += getNumOfGold(i, j, k);
+
+                    int numOfGold = getNumOfGold(i, j, k);
 
                     // 손해?
                     if (numOfGold * m >= getArea(k)) {
