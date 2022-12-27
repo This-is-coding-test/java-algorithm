@@ -13,7 +13,6 @@ public class 삼각형_컨베이어_벨트 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-
         st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
         t = Integer.parseInt(st.nextToken());
