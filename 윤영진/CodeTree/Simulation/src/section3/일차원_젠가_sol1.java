@@ -52,7 +52,7 @@ public class 일차원_젠가_sol1 {
         }
 
         System.out.println(endOfArray);
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= endOfArray; i++) {
             if (jenga[i] != 0) {
                 System.out.println(jenga[i]);
             }
