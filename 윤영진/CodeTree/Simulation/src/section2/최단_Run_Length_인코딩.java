@@ -24,7 +24,6 @@ public class 최단_Run_Length_인코딩 {
         A = br.readLine();
         for (int i = 0; i < A.length(); i++) {
             A = shift();
-
             result = Math.min(result, RLE());
         }
 
