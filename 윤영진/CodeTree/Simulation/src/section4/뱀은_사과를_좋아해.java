@@ -3,6 +3,7 @@ package section4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -21,17 +22,21 @@ public class 뱀은_사과를_좋아해 {
         }
 
         @Override
-        public String toString() {
-            return "Point{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
+        public boolean equals(Object o) {
+            Point p = (Point) o;
+            return (p.x == this.x && p.y == this.y);
+        }
+
+        @Override
+        public int hashCode() {
+            return Integer.valueOf(x + y).hashCode();
         }
     }
 
     static int N, M, K;
     static int[][] map;
     static LinkedList<Point> snake = new LinkedList<>();
+    public static HashSet<Point> snakePos = new HashSet<>();
 
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
@@ -55,6 +60,8 @@ public class 뱀은_사과를_좋아해 {
         }
 
         snake.add(new Point(1, 1));
+        snakePos.add(new Point(1, 1));
+
         int[] dirMapper = new int[128];
         dirMapper['U'] = 0;
         dirMapper['D'] = 1;
@@ -66,14 +73,16 @@ public class 뱀은_사과를_좋아해 {
             char d = st.nextToken().charAt(0);
             int p = Integer.parseInt(st.nextToken());
 
-            simulate(dirMapper[d], p);
+            if (!simulate(dirMapper[d], p)) {
+                break;
+            }
         }
 
         System.out.println(time);
 
     }
 
-    private static void simulate(int dir, int p) {
+    private static boolean simulate(int dir, int p) {
 
         for (int i = 0; i < p; i++) {
             time++;
@@ -82,39 +91,51 @@ public class 뱀은_사과를_좋아해 {
             int nx = head.x + dx[dir];
             int ny = head.y + dy[dir];
 
+            // 갈 수 있는지 확인
             if (nx <= 0 || ny <= 0 || nx > N || ny > N) {
-                System.out.println(time);
-                System.exit(0);
+                return false;
             }
-
-
-
-            // 사과 존재?
-            if (map[nx][ny] == 1) {
-                if (checkCrush(nx, ny)) {
-                    System.out.println(time);
-                    System.exit(0);
-                }
-                map[nx][ny] = 0;
-            } else { // 사과 존재x?
-                snake.removeLast();
-                if (checkCrush(nx, ny)) {
-                    System.out.println(time);
-                    System.exit(0);
-                }
-            }
-            snake.addFirst(new Point(nx, ny));
+            // 뱀을 한 칸 움직임
+            // 몸이 꼬였는지 확인
+            if(moveSnake(nx, ny) == false)
+                return false;
 
         }
+        return true;
+    }
+
+    private static boolean moveSnake(int nx, int ny) {
+        // 사과 존재?
+        if (map[nx][ny] == 1) {
+            map[nx][ny] = 0;
+            if (!pushFront(nx, ny)) {
+                return false;
+            }
+        } else { // 사과 존재x?
+            Point tail = snake.removeLast();
+            snakePos.remove(tail);
+
+            if (!pushFront(nx, ny)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean pushFront(int nx, int ny) {
+
+        if (checkCrush(nx, ny)) {
+            return false;
+        }
+
+        snake.addFirst(new Point(nx, ny));
+        snakePos.add(new Point(nx, ny));
+
+        return true;
     }
 
     private static boolean checkCrush(int nx, int ny) {
-        for (Point p : snake) {
-            if (nx == p.x && ny == p.y) {
-                return true;
-            }
-        }
-        return false;
+        return snakePos.contains(new Point(nx, ny));
     }
 
 }
