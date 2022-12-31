@@ -89,7 +89,6 @@ public class 숫자의_순차적_이동 {
                 if (map[i][j] == num) return new Point(i, j);
             }
         }
-
         return null;
     }
 }
