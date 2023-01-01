@@ -50,7 +50,7 @@ public class 최적의_십자_모양_폭발 {
                     int nx = i + dx[k];
                     int ny = j + dy[k];
                     if (nx >= 0 && ny >= 0 && nx < n && ny < n){
-                        if (copyMap[i][j] > 0 && copyMap[i][j] == copyMap[i][j + 1]) count++;
+                        if (copyMap[i][j] > 0 && copyMap[i][j] == copyMap[nx][ny]) count++;
                     }
                 }
             }
