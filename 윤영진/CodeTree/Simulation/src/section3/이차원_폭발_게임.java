@@ -27,6 +27,19 @@ public class 이차원_폭발_게임 {
             }
         }
 
+        simulate();
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (bombs[i][j] > 0) count++;
+            }
+        }
+
+        System.out.println(count);
+
+    }
+
+    private static void simulate() {
         for (int i = 0; i < K; i++) {
             while (bomb()) {
                 push();
@@ -38,14 +51,6 @@ public class 이차원_폭발_게임 {
         while (bomb()) {
             push();
         }
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
-                if (bombs[i][j] > 0) count++;
-            }
-        }
-
-        System.out.println(count);
 
     }
 
@@ -104,28 +109,22 @@ public class 이차원_폭발_게임 {
 
     public static int getEndIdxOfExplosion(int startIdx, int col, int currNum) {
         int endIdx = startIdx + 1;
-        while (endIdx < N) {
-            if (bombs[endIdx][col] == currNum)
-                endIdx++;
-            else {
-                break;
-            }
+        while (endIdx < N && currNum == bombs[endIdx][col]) {
+            endIdx++;
         }
-
         return endIdx - 1;
     }
 
 
     private static void rotate() {
 
+
         int[][] temp = new int[N][N];
 
         int currIdx;
-        for(int i = N - 1; i >= 0; i--) {
-            currIdx = N - 1;
-            for(int j = N - 1; j >= 0; j--) {
-                if(bombs[i][j] != 0)
-                    temp[currIdx--][N - i - 1] = bombs[i][j];
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                temp[i][j] = bombs[N - j - 1][i];
             }
         }
 
