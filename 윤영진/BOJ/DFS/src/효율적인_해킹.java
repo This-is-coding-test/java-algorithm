@@ -31,15 +31,16 @@ public class 효율적인_해킹 {
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
-            listGraph.get(b).add(a);
+            listGraph.get(a).add(b);
         }
 
         for (int i = 1; i <= N; i++) {
             visited = new boolean[N + 1];
-            cnt = 0;
             bfs(i);
-            count[i] = cnt;
-            max = Math.max(cnt, max);
+        }
+
+        for (int i = 1; i <= N; i++) {
+            max = Math.max(max, count[i]);
         }
 
         StringBuilder sb = new StringBuilder();
@@ -64,8 +65,8 @@ public class 효율적인_해킹 {
             Integer v = q.poll();
             for (Integer val : listGraph.get(v)) {
                 if (!visited[val]) {
+                    count[val]++;
                     visited[val] = true;
-                    cnt++;
                     q.add(val);
                 }
 
