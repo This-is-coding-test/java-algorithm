@@ -15,8 +15,8 @@ public class 그래프_탐색 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-
-        st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine(), '-');
+        st.countTokens()
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         visited = new boolean[N];
