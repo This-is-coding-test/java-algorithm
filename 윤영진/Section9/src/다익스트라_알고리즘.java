@@ -22,6 +22,7 @@ public class 다익스트라_알고리즘 {
 
 
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
@@ -49,6 +50,7 @@ public class 다익스트라_알고리즘 {
 
         pQ.offer(new Edge(1, 0));
         dijkstra();
+        List<Integer> list = new LinkedList<>();
 
         for (int i = 2; i <= N; i++) {
 

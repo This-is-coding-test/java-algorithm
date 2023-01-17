@@ -32,11 +32,13 @@ public class 거리_합_구하기 {
     static List<ArrayList<Edge>> graph = new ArrayList<>();
     static int[] dist;
     static boolean[] visited;
+    static int[] subTreeSize;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         N = Integer.parseInt(br.readLine());
+        subTreeSize = new int[N + 1];
 
         for (int i = 0; i <= N; i++) {
             graph.add(new ArrayList<>());
@@ -52,30 +54,43 @@ public class 거리_합_구하기 {
             graph.get(end).add(new Edge(start, weight));
         }
 
+        dist = new int[N + 1];
+
+        DFS1(1, 1);
+        DFS2(1, 1);
+
         for (int i = 1; i <= N; i++) {
-            dist = new int[N + 1];
-            visited = new boolean[N + 1];
-            visited[i] = true;
-            DFS(i);
-
-            int sum = Arrays.stream(dist).sum();
-            System.out.println(sum);
-
+            System.out.println(dist[i]);
         }
 
     }
 
-    private static void DFS(int vex) {
+    private static void DFS2(int vex, int parent) {
 
         for (Edge edge : graph.get(vex)) {
-
-            if (!visited[edge.vex]) {
-                visited[edge.vex] = true;
-                dist[edge.vex] = dist[vex] + edge.weight;
-                DFS(edge.vex);
+            int child = edge.vex;
+            int weight = edge.weight;
+            if (child != parent) {
+                dist[child] = dist[vex] + weight * (N - 2 * subTreeSize[child]);
+                DFS2(child, vex);
             }
-
         }
 
     }
+
+    private static void DFS1(int vex, int parent) {
+        subTreeSize[vex] = 1;
+        for (Edge edge : graph.get(vex)) {
+            int child = edge.vex;
+            int weight = edge.weight;
+            if (child != parent) {
+                DFS1(child, vex);
+                dist[vex] += dist[child] + subTreeSize[child] * weight;
+                subTreeSize[vex] += subTreeSize[child];
+            }
+        }
+
+    }
+
+
 }
