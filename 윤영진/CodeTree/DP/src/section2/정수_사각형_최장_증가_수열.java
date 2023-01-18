@@ -91,7 +91,7 @@ public class 정수_사각형_최장_증가_수열 {
         }
     }
 
- 
+
     private static boolean inRange(int nx, int ny) {
         return nx >= 0 && ny >= 0 && nx < n && ny < n;
     }
