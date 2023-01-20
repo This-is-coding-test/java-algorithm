@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 최대_동전_거슬러주기 {
+public class 부분_수열의_합 {
+
     static int n, m;
-    static int[] coins;
+    static int[] arr;
     static int[] dp;
 
     public static void main(String[] args) throws IOException {
@@ -16,32 +17,34 @@ public class 최대_동전_거슬러주기 {
         st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
-        coins = new int[n];
+
+        arr = new int[n];
         dp = new int[m + 1];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            coins[i] = Integer.parseInt(st.nextToken());
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         init();
 
-
-        for (int coin : coins) {
-            for (int i = coin; i <= m; i++) {
-                if (dp[i - coin] == -1) continue;
-
-                if (dp[i] < dp[i - coin] + 1) {
-                    dp[i] = dp[i - coin] + 1;
-                }
+        for (int v : arr) {
+            for (int i = m; i >= v; i--) {
+                dp[i] = Math.min(dp[i], dp[i - v] + 1);
             }
         }
-        System.out.println(dp[m]);
+
+        if (dp[m] == 101) {
+            System.out.println("No");
+        } else {
+            System.out.println("Yes");
+        }
+
 
     }
 
-    public static void init() {
+    private static void init() {
         for (int i = 0; i <= m; i++) {
-            dp[i] = -1;
+            dp[i] = 101;
         }
         dp[0] = 0;
     }
