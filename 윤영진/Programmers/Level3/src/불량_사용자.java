@@ -1,6 +1,4 @@
-import java.io.IOException;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 public class 불량_사용자 {
     // 개발팀 내에서 이벤트 개발을 담당하고 있는 무지는 최근 진행된 카카오이모티콘 이벤트에 비정상적인 방법으로 당첨을 시도한 응모자들을 발견
