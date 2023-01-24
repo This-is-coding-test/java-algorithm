@@ -55,7 +55,7 @@ public class 배낭_채우기_2 {
         for (int i = 0; i <= M; i++) {
             max = Math.max(max, dp[i]);
         }
-        
+
 
         System.out.println(max);
 
