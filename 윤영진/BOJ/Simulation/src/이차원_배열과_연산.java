@@ -35,21 +35,16 @@ public class 이차원_배열과_연산 {
     }
 
 
-
-
     static int r, c, k;
     static int[][] A = new int[101][101]; // (x,y)
     static int xLength = 3; // 행
     static int yLength = 3; // 열
 
 
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
-
         st = new StringTokenizer(br.readLine());
-
         r = Integer.parseInt(st.nextToken());
         c = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
@@ -61,87 +56,81 @@ public class 이차원_배열과_연산 {
             }
         }
 
-        System.out.println(solution());
-
-
-    }
-
-    private static int solution() {
-        for (int time = 0; time <= 100; time++) {
-            if (A[r][c] == k) {
-                return time;
-            }
-            operating();
+        int time = 0;
+        while (time < 100) {
+            if (A[r][c] == k) break;
+            simulate();
+            time++;
         }
-        return -1;
+        if (time == 100) {
+            time = -1;
+        }
+        System.out.println(time);
+
+
     }
 
-    private static void operating() {
+    private static void simulate() {
+
         if (xLength >= yLength) {
-            for (int i = 1; i <= xLength; i++) {
-                R(i);
-            }
-        }else {
-            for (int i = 1; i <= yLength; i++) {
-                C(i);
-            }
+            R();
+        } else {
+            C();
         }
     }
 
-    private static void R(int idx) {
-        PriorityQueue<Pair> pQ = new PriorityQueue<>();
-        Map<Integer, Integer> map = new HashMap<>();
+    private static void C() {
 
-        for (int i = 1; i <= yLength; i++) {
+        for (int idx = 1; idx <= yLength; idx++) {
+            PriorityQueue<Pair> pQ = new PriorityQueue<>();
+            Map<Integer, Integer> map = new HashMap<>();
 
-            if (A[idx][i] == 0) continue;
-            map.put(A[idx][i], map.getOrDefault(A[idx][i], 0) + 1);
+            for (int j = 1; j <= xLength; j++) {
+                if (A[j][idx] == 0) continue;
+                map.put(A[j][idx], map.getOrDefault(A[j][idx], 0) + 1);
+            }
+            map.forEach((k, v) -> pQ.add(new Pair(k, v)));
 
+            int i = 1;
+            while (!pQ.isEmpty()) {
+                Pair p = pQ.poll();
+                A[i++][idx] = p.number;
+                A[i++][idx] = p.count;
+            }
+
+            xLength = Math.max(i, xLength);
+            while (i <= 99) {
+                A[i++][idx] = 0;
+                A[i++][idx] = 0;
+            }
         }
 
-        map.forEach((k, v) -> pQ.add(new Pair(k, v)));
-
-        int i = 1;
-        while (!pQ.isEmpty()) {
-            Pair pair = pQ.poll();
-            A[idx][i++] = pair.number;
-            A[idx][i++] = pair.count;
-        }
-
-        yLength = Math.max(i, yLength);
-
-        while (i<=99) {
-            A[idx][i++] = 0;
-            A[idx][i++] = 0;
-        }
     }
 
-    private static void C(int idx) {
+    private static void R() {
 
-        PriorityQueue<Pair> pQ = new PriorityQueue<>();
-        Map<Integer, Integer> map = new HashMap<>();
+        for (int idx = 1; idx <= xLength; idx++) {
+            PriorityQueue<Pair> pQ = new PriorityQueue<>();
+            Map<Integer, Integer> map = new HashMap<>();
 
-        for (int i = 1; i <= xLength; i++) {
+            for (int j = 1; j <= yLength; j++) {
+                if (A[idx][j] == 0) continue;
+                map.put(A[idx][j], map.getOrDefault(A[idx][j], 0) + 1);
+            }
+            map.forEach((k, v) -> pQ.add(new Pair(k, v)));
 
-            if (A[i][idx] == 0) continue;
-            map.put(A[i][idx], map.getOrDefault(A[i][idx], 0) + 1);
+            int i = 1;
+            while (!pQ.isEmpty()) {
+                Pair p = pQ.poll();
+                A[idx][i++] = p.number;
+                A[idx][i++] = p.count;
+            }
 
-        }
-
-        map.forEach((k, v) -> pQ.add(new Pair(k, v)));
-
-        int i = 1;
-        while (!pQ.isEmpty()) {
-            Pair pair = pQ.poll();
-            A[i++][idx] = pair.number;
-            A[i++][idx] = pair.count;
-        }
-
-        xLength = Math.max(i, xLength);
-
-        while (i<=99) {
-            A[i++][idx] = 0;
-            A[i++][idx] = 0;
+            yLength = Math.max(i, yLength);
+            while (i <= 99) {
+                A[idx][i++] = 0;
+                A[idx][i++] = 0;
+            }
         }
     }
 
