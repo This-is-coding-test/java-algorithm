@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class 쉼터 {
+public class 샘터 {
     // K채의 집을 지을 때, 가능하면 샘터의 주변에 집들을 지어서 K채의 모든 집에 대한 불행도의 합이 최소
     //
     // 일직선 상의 공간에 N개의 샘터가 존재하며, K채의 집을 짓고자 한다.
@@ -46,16 +46,18 @@ public class 쉼터 {
 
     private static void bfs() {
         int cnt = 0;
+
         while (!queue.isEmpty()) {
             int len = queue.size();
             for (int i = 0; i < len; i++) {
                 Pair p = queue.poll();
+
                 for (int k = 0; k < 2; k++) {
                     int nx = p.x + d[k];
                     if (canGo(nx)) {
                         cnt++;
                         answer += p.dist + 1;
-                        if (cnt == K) return;
+                        if(cnt == K) return;
 
                         visited.add(nx);
                         queue.offer(new Pair(nx, p.dist + 1));
@@ -66,10 +68,10 @@ public class 쉼터 {
 
 
         }
-
     }
 
     private static boolean canGo(int nx) {
-        return nx >= -MAX && nx <= MAX && !visited.contains(nx);
+//        nx >= -MAX && nx <= MAX &&
+        return  !visited.contains(nx);
     }
 }
