@@ -42,7 +42,7 @@ public class 최소_차_분할 {
         int min = Integer.MAX_VALUE;
         for (int i = 1; i <= m; i++) {
             if (dp[n][i]) {
-                min = Math.min(min, Math.abs(2 * i - m));
+                min = Math.min(min, Math.abs(i - (m - i)));
             }
         }
         System.out.println(min);
