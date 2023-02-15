@@ -1,16 +1,11 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class 링크와_스타트 {
 
     static int N;
     static int[][] arr;
-
-    static List<Integer> link = new ArrayList<>();
+    static boolean[] visited;
     static int result = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
@@ -18,6 +13,7 @@ public class 링크와_스타트 {
         StringTokenizer st;
         N = Integer.parseInt(br.readLine());
         arr = new int[N][N];
+        visited = new boolean[N];
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
@@ -32,21 +28,29 @@ public class 링크와_스타트 {
 
     private static void dfs(int depth) {
         if (depth == N) {
-            if (link.size() == N || link.size() == 0) return;
-            List<Integer> start = new ArrayList<>();
-            for (int i = 0; i < N; i++) {
-                if (!link.contains(i)) start.add(i);
-            }
-            result = Math.min(result, calculate(start));
+            result = Math.min(result, calculate());
         } else {
-            link.add(depth);
+            visited[depth] = true;
             dfs(depth + 1);
-            link.remove(link.size() - 1);
+            visited[depth] = false;
             dfs(depth + 1);
         }
     }
 
-    private static int calculate(List<Integer> start) {
+    private static int calculate() {
+        List<Integer> link = new ArrayList<>();
+        List<Integer> start = new ArrayList<>();
+
+        for (int i = 0; i < N; i++) {
+            if (visited[i]) {
+                link.add(i);
+            } else {
+                start.add(i);
+            }
+        }
+
+        if (link.size() == 0 || start.size() == 0) return Integer.MAX_VALUE;
+
         int linkSum = 0;
         int startSum = 0;
 
