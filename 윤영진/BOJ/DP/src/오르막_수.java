@@ -20,7 +20,7 @@ public class 오르막_수 {
                 for (int k = 0; k <= j; k++) {
                     dp[i][j] += dp[i - 1][k];
                     dp[i][j] %= 10007;
-                    
+
                 }
             }
         }
