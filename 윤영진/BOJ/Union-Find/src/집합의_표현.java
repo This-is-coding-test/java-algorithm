@@ -27,7 +27,7 @@ public class 집합의_표현 {
             if (op == 0) {
                 union(p1, p2);
             } else {
-                if (isFriend(p1, p2)) {
+                if (isSet(p1, p2)) {
                     sb.append("YES").append("\n");
                 } else {
                     sb.append("NO").append("\n");
@@ -38,7 +38,7 @@ public class 집합의_표현 {
         System.out.println(sb);
     }
 
-    private static boolean isFriend(int p1, int p2) {
+    private static boolean isSet(int p1, int p2) {
         int f1 = find(p1);
         int f2 = find(p2);
         return f1 == f2;
