@@ -7,7 +7,6 @@ import java.util.StringTokenizer;
 public class 수_찾기 {
     static int N, M;
     static int[] arr;
-    static int max = Integer.MIN_VALUE;
     static StringBuilder sb = new StringBuilder();
 
 
@@ -20,7 +19,6 @@ public class 수_찾기 {
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
-            max = Math.max(max, arr[i]);
         }
 
         Arrays.sort(arr);
@@ -29,10 +27,6 @@ public class 수_찾기 {
         st = new StringTokenizer(br.readLine());
         while (M-- > 0) {
             int f = Integer.parseInt(st.nextToken());
-//            if (max < f) {
-//                sb.append(0).append("\n");
-//                continue;
-//            }
             if (binarySearch(f)) {
                 sb.append(1).append("\n");
             } else {
