@@ -10,7 +10,6 @@ public class 괄호 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
-
         for (int i = 0; i < N; i++) {
             String str = br.readLine();
             Stack<Character> stack = new Stack<>();
