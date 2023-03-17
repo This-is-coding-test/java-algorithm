@@ -8,7 +8,6 @@ public class 이중우선순위큐 {
     static PriorityQueue<Integer> minHeap = new PriorityQueue<>();
     static PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);
 
-    static
     public int[] solution(String[] operations) {
 
         for (String operation : operations) {
