@@ -50,5 +50,4 @@ public class 뉴스_클러스터링 {
         return (int) (answer * 65536);
     }
 
-   
 }
