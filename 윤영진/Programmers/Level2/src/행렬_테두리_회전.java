@@ -36,7 +36,6 @@ class 행렬_테두리_회전 {
 
     public int rotate(int x1, int y1, int x2, int y2) { // 2, 2, 5, 4
         int min = Integer.MAX_VALUE;
-
         int tmp = map[x1][y1];
         min = Math.min(min, tmp);
 
