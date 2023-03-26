@@ -15,7 +15,7 @@ class 카드_짝_맞추기 {
     static int[] dx = {-1,1,0,0};
     static int[] dy = {0,0, -1,1};
 
-    public int solution(int[][] board, int r, int c) {
+    public final int solution(int[][] board, int r, int c) {
         boards = board;
         return permutate(new Point(r, c, 0));
     }
