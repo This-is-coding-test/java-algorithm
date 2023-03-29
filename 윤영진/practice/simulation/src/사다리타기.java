@@ -2,7 +2,6 @@ import java.util.*;
 class 사다리타기 {
     // 현수네 반에는 n명의 학생
     // n명의 학생을 모두 사다리타기를 한 다음 당첨된 학생을 이번주 학급회장
-    //
     public char[] solution(int n, int[][] ladder){
         char[] answer = new char[n];
         int[] members = new int[n + 1];
