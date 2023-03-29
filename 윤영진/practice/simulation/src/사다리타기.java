@@ -5,8 +5,8 @@ class 사다리타기 {
     public char[] solution(int n, int[][] ladder){
         char[] answer = new char[n];
 
-        for (int i = 1; i <= n; i++) {
-            answer[i - 1] = (char) (64 + i);
+        for (int i = 0; i < n; i++) {
+            answer[i] = (char) (65 + i);
         }
 
         for (int i = 0; i < ladder.length; i++) {
