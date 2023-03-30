@@ -3,7 +3,6 @@ class 최대길이_바이토닉_수열_1 {
     static int n;
 
     public int solution(int[] nums) {
-        int answer = 0;
         n = nums.length;
         dp = new int[n][2];
         int max = Integer.MIN_VALUE;
