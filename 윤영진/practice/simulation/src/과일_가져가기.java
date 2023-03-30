@@ -21,7 +21,7 @@ class 과일_가져가기 {
                 for (int j = i + 1; j < n; j++) {
                     if (visited[j]) continue;
                     int idx2 = isUnique(fruit[j]);
-                    if (idx2 != -1 && idx1 != idx2) {
+                    if (idx2 != -1 && idx1 != idx2 && fruit[i][idx2] > 0 && fruit[j][idx1] > 0) {
                         if (fruit[i][idx1] + 1 <= fruit[i][idx2] - 1 && fruit[j][idx1] - 1 >= fruit[j][idx2] + 1) {
                             fruit[i][idx1] += 1;
                             fruit[i][idx2] -= 1;
