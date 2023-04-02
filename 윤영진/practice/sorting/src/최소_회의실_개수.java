@@ -12,7 +12,6 @@ class 최소_회의실_개수 {
     }
 
     public int solution(int[][] meetings) {
-        int answer = 0;
         List<Info> infoList = new ArrayList<>();
         for (int i = 0; i < meetings.length; i++) {
             int s = meetings[i][0];
@@ -20,11 +19,9 @@ class 최소_회의실_개수 {
             infoList.add(new Info(s, 'S'));
             infoList.add(new Info(e, 'E'));
         }
-        infoList.sort(new Comparator<>() {
-            public int compare(Info i1, Info i2) {
-                if (i1.t == i2.t) return i1.type - i2.type;
-                return i1.t - i2.t;
-            }
+        infoList.sort((i1, i2) -> {
+            if (i1.t == i2.t) return i1.type - i2.type;
+            return i1.t - i2.t;
         });
 
         int max = Integer.MIN_VALUE;
