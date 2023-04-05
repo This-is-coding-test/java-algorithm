@@ -46,7 +46,9 @@ class 벽_허물기 {
         while (!pQ.isEmpty()) {
 
             Point p = pQ.poll();
-            if (p.cost > costs[p.x][p.y]) continue; // 현재 i, j 까지의 최소 경로보다 큰 경우 제외
+            if (p.cost > costs[p.x][p.y]) continue;
+            // 현재 i, j 까지의 최소 경로보다 큰 경우 제외
+            // 이미 처리 
 
             for (int d = 0; d < 4; d++) {
                 int nx = p.x + dx[d];
