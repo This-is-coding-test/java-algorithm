@@ -21,7 +21,5 @@ public class 거스름돈 {
         }
         if (dp[n] == 987654321) dp[n] = -1;
         System.out.println(dp[n]);
-
-
     }
 }
