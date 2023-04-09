@@ -1,28 +1,22 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class 사다리_조작 {
+    static class Line {
+        int a; // a 가로선
+        int b; // b, b + 1 세로선
 
-    static class Pair {
-        int idx;
-        int stair;
-
-        public Pair(int idx, int stair) {
-            this.idx = idx;
-            this.stair = stair;
+        public Line(int a, int b) {
+            this.a = a;
+            this.b = b;
         }
-
     }
 
     static int N, M, H;
-    static List<Pair> selectedLines = new ArrayList<>();
-    static int count = Integer.MAX_VALUE;
     static boolean[][] visited;
+    static ArrayList<Line> lines = new ArrayList<>();
     static boolean flag = false;
 
     public static void main(String[] args) throws IOException {
@@ -32,104 +26,67 @@ public class 사다리_조작 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         H = Integer.parseInt(st.nextToken());
-        if (M == 0) {
-            System.out.println(0);
-            return;
-        }
-
-        visited = new boolean[H + 1][N]; // [6][5]
+        visited = new boolean[H + 1][N + 1]; // (6, 4)
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-            int stair = Integer.parseInt(st.nextToken()); // 1
-            int idx = Integer.parseInt(st.nextToken()); // 1
-
-            visited[stair][idx] = true;
-            selectedLines.add(new Pair(idx, stair));
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            lines.add(new Line(a, b));
+            visited[a][b] = true;
         }
 
+        int answer = 0;
         for (int i = 0; i <= 3; i++) {
-            if (!flag) {
-                findMinLines(0, i);
-            }
+            answer = i;
+            backtracking(0, i, 1);
+            if (flag) break;
         }
-        System.out.println(flag ? count : "-1");
+
+        System.out.println(flag ? answer : -1);
+
     }
 
-    private static void findMinLines(int depth, int cnt) {
+    private static void backtracking(int depth, int cnt, int x) {
         if (flag) return;
-        if (depth == cnt) {
-            if (check() && isPossible()) {
-                count = Math.min(count, selectedLines.size() - M);
-                flag = true;
-            }
+        if (cnt == depth) {
+            if (isPossible()) flag = true;
         } else {
-
-            for (int i = 1; i <= H; i++) { // stair
-                for (int j = 1; j < N; j++) { // idx
-                    if (!visited[i][j]) {
+            // (1, 1) ~ (6 4)
+            for (int i = x; i <= H; i++) { // 3
+                for (int j = 1; j < N; j++) { // 4
+                    if (!visited[i][j] && !visited[i][j - 1] && !visited[i][j + 1]) {
                         visited[i][j] = true;
-                        selectedLines.add(new Pair(j, i));
-                        findMinLines(depth + 1, cnt);
-
-                        selectedLines.remove(selectedLines.size() - 1);
+                        lines.add(new Line(i, j));
+                        backtracking(depth + 1, cnt, i);
+                        lines.remove(lines.size() - 1);
                         visited[i][j] = false;
                     }
-
                 }
             }
-
         }
-
     }
 
     private static boolean isPossible() {
-
-        List<Pair> copyLine = new ArrayList<>();
-        for (int i = 0; i < selectedLines.size(); i++) {
-            copyLine.add(selectedLines.get(i));
-        }
-
-        Collections.sort(copyLine, (o1, o2) -> {
-            if (o1.stair != o2.stair) return o1.stair - o2.stair;
-            return o1.idx - o2.idx;
+        ArrayList<Line> tmpList = (ArrayList<Line>) lines.clone();
+        tmpList.sort((o1, o2) -> {
+            if (o1.a == o2.a) return o1.b - o2.b;
+            return o1.a - o2.a;
         });
-
-        int[] num = new int[N + 1];
-
+        int[] arr = new int[N + 1];
         for (int i = 1; i <= N; i++) {
-            num[i] = i;
+            arr[i] = i;
         }
 
-        for (int i = 0; i < copyLine.size(); i++) {
-            int idx = copyLine.get(i).idx;
-            int temp = num[idx];
-            num[idx] = num[idx + 1];
-            num[idx + 1] = temp;
+        for (Line line : tmpList) { // (1 1)
+            int tmp = arr[line.b]; // 1
+            arr[line.b] = arr[line.b + 1];
+            arr[line.b + 1] = tmp;
         }
 
         for (int i = 1; i <= N; i++) {
-            if (num[i] != i) return false;
+            if (arr[i] != i) return false;
         }
-
-        return true;
-    }
-
-    private static boolean check() {
-
-
-        for (int i = 0; i < selectedLines.size(); i++) {
-            for (int j = i + 1; j < selectedLines.size(); j++) {
-                if (selectedLines.get(i).stair == selectedLines.get(j).stair) {
-                    if (selectedLines.get(i).idx == selectedLines.get(j).idx - 1
-                            || selectedLines.get(i).idx == selectedLines.get(j).idx +1) {
-                        return false;
-                    }
-                }
-
-            }
-        }
-
         return true;
     }
 }
