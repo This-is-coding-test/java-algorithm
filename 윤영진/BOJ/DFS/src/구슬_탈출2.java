@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class 구슬_탈출 {
+public class 구슬_탈출2 {
     // 구슬 탈출은 직사각형 보드에 빨간 구슬과 파란 구슬을 하나씩 넣은 다음, 빨간 구슬을 구멍을 통해 빼내는 게임이다.
     // N - 세로, M - 가로
     // 빨간 구슬 1개, 파란 구슬 1개
@@ -77,7 +77,7 @@ public class 구슬_탈출 {
         int L = 0;
         while (!queue.isEmpty()) {
             L++;
-            if (L > 10) return 0;
+            if (L > 10) return -1;
             int len = queue.size();
             for (int i = 0; i < len; i++) {
 
@@ -87,7 +87,7 @@ public class 구슬_탈출 {
                     bM = move(p.bx, p.by, d);
 
                     if (map[bM.x][bM.y] == 'O') continue;
-                    if (map[rM.x][rM.y] == 'O') return 1;
+                    if (map[rM.x][rM.y] == 'O') return L;
 
                     if (rM.x == bM.x && rM.y == bM.y) { // 동일한 위치에 존재하는 경우
                         if (rM.dist > bM.dist) {
@@ -106,7 +106,7 @@ public class 구슬_탈출 {
             }
         }
 
-        return 0;
+        return -1;
     }
 
     private static Marble move(int x, int y, int d) {
