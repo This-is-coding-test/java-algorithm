@@ -76,7 +76,7 @@ public class 구슬_탈출 {
         Marble rM, bM;
         int L = 0;
         while (!queue.isEmpty()) {
-
+            L++;
             int len = queue.size();
             for (int i = 0; i < len; i++) {
 
@@ -103,7 +103,6 @@ public class 구슬_탈출 {
                     queue.offer(new Point(rM.x, rM.y, bM.x, bM.y));
                 }
             }
-            L++;
             if (L > 10) return 0;
         }
 
