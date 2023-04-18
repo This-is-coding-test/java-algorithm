@@ -45,7 +45,7 @@ public class 캐슬_디펜스 {
         if (depth == 3) {
             simulate();
         } else {
-            for (int i = start; i <= N; i++) {
+            for (int i = start; i <= M; i++) {
                 output.add(i);
                 comb(depth + 1, i + 1);
                 output.remove(output.size() - 1);
