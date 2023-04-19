@@ -13,15 +13,43 @@ public class 문자열_게임_2 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         T = Integer.parseInt(br.readLine());
+
         while (T-- > 0) {
             String W = br.readLine();
             int K = Integer.parseInt(br.readLine());
+            if (K == 1) {
+                sb.append(1).append(" ").append(1).append("\n");
+                continue;
+            }
 
-            
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+
+            int[] alphabet = new int[26];
+            for (char c : W.toCharArray()) {
+                alphabet[c - 'a']++;
+            }
 
 
+            for (int i = 0; i < W.length(); i++) {
+                if (alphabet[W.charAt(i) - 'a'] < K) continue;
+
+                int count = 1;
+                for (int j = i + 1; j < W.length(); j++) {
+                    if (W.charAt(i) == W.charAt(j)) count++;
+                    if (count == K) {
+                        min = Math.min(min, j - i + 1); // 4 -> 3
+                        max = Math.max(max, j - i + 1); // 4
+                        break;
+                    }
+                }
+            }
+            if (min == Integer.MAX_VALUE && max == Integer.MIN_VALUE) sb.append(-1).append("\n");
+            else sb.append(min).append(" ").append(max).append("\n");
 
         }
+        System.out.println(sb);
     }
 }
