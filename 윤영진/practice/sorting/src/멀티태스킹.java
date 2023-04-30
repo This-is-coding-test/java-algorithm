@@ -21,13 +21,15 @@ class 멀티태스킹 {
         }
 
         int r = tasks.length - idx; // 남은 tasks 개수
+        System.out.println(k + " " + r + " " + idx);
+
         return (int) (k % r) + idx + 1;
     }
 
     public static void main(String[] args) {
         멀티태스킹 T = new 멀티태스킹();
-        System.out.println(T.solution(new int[]{1, 2, 3}, 5));
+//        System.out.println(T.solution(new int[]{1, 2, 3}, 5));
         System.out.println(T.solution(new int[]{8, 5, 2, 9, 10, 7}, 30));
-        System.out.println(T.solution(new int[]{8, 9, 12, 23, 45, 16, 25, 50}, 100));
+//        System.out.println(T.solution(new int[]{8, 9, 12, 23, 45, 16, 25, 50}, 100));
     }
 }
