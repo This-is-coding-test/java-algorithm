@@ -13,8 +13,6 @@ public class 회전_초밥 {
     // 다양한 종류의 초밥
     static int N, d, k, c;
     static int[] sushi;
-    static Map<Integer, Integer> map = new HashMap<>();
-    static int result = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,50 +22,46 @@ public class 회전_초밥 {
         d = Integer.parseInt(st.nextToken());
         k = Integer.parseInt(st.nextToken());
         c = Integer.parseInt(st.nextToken());
+        // 8 + 4 - 1
 
-        sushi = new int[N];
+        sushi = new int[N + k - 1];
 
         for (int i = 0; i < N; i++) {
             int s = Integer.parseInt(br.readLine());
             sushi[i] = s;
         }
+        // 7 9 7 30 2 7 9 25 7 9 7
+
+        int idx = 0;
+        for (int i = N; i < N + k - 1; i++) {
+            sushi[i] = sushi[idx++];
+        }
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int cnt = 0;
 
         for (int i = 0; i < k - 1; i++) {
             map.put(sushi[i], map.getOrDefault(sushi[i], 0) + 1);
         }
+        if (!map.containsKey(c)) {    // 쿠폰 초밥이 없으면 +1
+            cnt = map.size() + 1;
+        } else cnt = map.size();
 
         int left = 0;
-
-        for (int i = k - 1; i < N; i++) {
+        for (int i = k - 1; i < N + k - 1; i++) {
             map.put(sushi[i], map.getOrDefault(sushi[i], 0) + 1);
-
-            if (!map.containsKey(c)) {
-                result = Math.max(result, map.size() + 1);
+            if (!map.containsKey(c)) {    // 쿠폰 초밥이 없으면 +1
+                cnt = Math.max(cnt, map.size() + 1);
             } else {
-                result = Math.max(result, map.size());
+                cnt = Math.max(cnt, map.size());
             }
 
             map.put(sushi[left], map.get(sushi[left]) - 1);
-            if (map.get(sushi[left]) == 0) {
-                map.remove(sushi[left]);
-            }
+            if (map.get(sushi[left]) == 0) map.remove(sushi[left]);
             left++;
         }
 
-        for (int i = 0; i < k - 1; i++) {
-            map.put(sushi[i], map.getOrDefault(sushi[i], 0) + 1);
-            if (!map.containsKey(c)) {
-                result = Math.max(result, map.size() + 1);
-            } else {
-                result = Math.max(result, map.size());
-            }
-
-            map.put(sushi[left], map.get(sushi[left]) - 1);
-            if (map.get(sushi[left]) == 0) {
-                map.remove(sushi[left]);
-            }
-            left++;
-        }
-        System.out.println(result);
+        System.out.println(cnt);
     }
+
 }
