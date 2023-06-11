@@ -1,41 +1,33 @@
 public class 순위 {
     public int solution(int n, int[][] results) {
+        int answer = 0;
+        int[][] adj = new int[n + 1][n + 1];
 
-        int[][] floyd = new int[n+1][n+1];
-
-        for (int i =0 ;i<results.length;i++) {
+        for (int i = 0; i < results.length; i++) {
             int A = results[i][0];
             int B = results[i][1];
 
-            floyd[A][B] = 1;
-            floyd[B][A] = -1;
+            adj[A][B] = 1;
         }
 
-        for(int i = 1; i <= n; i++){
-            for(int j = 1; j <= n; j++){
-                for(int k = 1; k <= n; k++){
-                    if(floyd[i][k] == 1 && floyd[k][j] == 1){
-                        floyd[i][j] = 1;
-                        floyd[j][i] = -1;
-                    }
-                    if(floyd[i][k] == -1 && floyd[k][j] == -1){
-                        floyd[i][j] = -1;
-                        floyd[j][i] = 1;
+        for (int middle = 1; middle <= n; middle++) {
+
+            for (int start = 1; start <= n; start++) {
+                for (int end = 1; end <= n; end++) {
+                    if (adj[start][middle] == 1 && adj[middle][end] == 1) {
+                        adj[start][end] = 1;
                     }
                 }
             }
         }
-        int answer = 0;
 
-        for(int i=1;i<=n;i++) {
-            int cnt = 0;
-            for (int j=1;j<=n;j++){
-                if (floyd[i][j] != 0) cnt++;
+        for (int i = 1; i <= n; i++) {
+            int count = 0;
+            for (int j = 1; j <= n; j++) {
+                if (adj[i][j] == 1 || adj[j][i] == 1) count++;
             }
-            if(cnt == n - 1) answer++;
+            if (count == n - 1) answer++;
         }
-
-
         return answer;
     }
 }
