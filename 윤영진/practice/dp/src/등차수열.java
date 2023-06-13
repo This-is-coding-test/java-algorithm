@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.StringTokenizer;
 
 public class 등차수열 {
     // 1 3 4 5 7
@@ -31,12 +30,11 @@ public class 등차수열 {
             for (int j = i + 1; j <= N; j++) {
                 dp[i][j] = 2;
                 int diff = nums[j] - nums[i];
-                for (int k = i - 1; k >= 1; k--) {
-                    if (diff == nums[i] - nums[k]) {
-                        dp[i][j] = Math.max(dp[i][j], dp[k][i] + 1);
-                        break;
-                    }
+                int k;
+                for (k = i - 1; k >= 1; k--) {
+                    if (diff == nums[i] - nums[k]) break;
                 }
+                dp[i][j] = Math.max(dp[i][j], dp[k][i] + 1);
                 answer = Math.max(answer, dp[i][j]);
             }
         }
